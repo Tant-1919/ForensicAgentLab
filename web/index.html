@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鉴证 · 报告质控 Agent</title><link rel="stylesheet" href="/static/style.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<header><div class="brand"><span class="mark">鉴</span><div><strong>鉴证</strong><small>报告质控工作台</small></div></div><span id="mode" class="badge">正在连接</span></header>
+<main>
+<section class="hero"><p class="kicker">FORENSIC REPORT AGENT</p><h1>血液检验报告质控</h1><p>从报告疑点到证据核对，再由人工作出复核决定。</p></section>
+<div class="workspace">
+<aside class="card intake">
+<div class="section-no">01 / 发起审核</div><h2>选择演示案件</h2>
+<label for="case">案件</label><select id="case" disabled><option>正在加载…</option></select>
+<div id="preview"></div>
+<button id="run" class="primary" disabled>开始审核</button>
+<p class="fine">仅使用合成材料。演示规则不作为正式鉴定依据。</p>
+</aside>
+<div class="right">
+<section class="card result">
+<div class="section-no">02 / 质控结果</div><div class="row"><h2>问题与证据</h2><span id="status" class="badge">未开始</span></div>
+<p id="error" class="error" role="alert" hidden></p><div id="result" aria-live="polite"><p class="placeholder">选择案件并开始审核后，在这里查看检查结果和原文证据。</p></div>
+</section>
+<section class="card" id="review" hidden><div class="section-no">03 / 人工复核</div><h2>复核决定</h2>
+<form id="review-form"><label for="note">备注（可选）</label><textarea id="note" maxlength="300" placeholder="记录采纳或驳回的理由"></textarea>
+<div class="actions"><button type="submit" value="accept" class="primary">采纳审核结果</button><button type="submit" value="reject">驳回</button></div></form>
+<p id="review-done" hidden></p>
+</section>
+<section class="card" id="trace-panel" hidden><div class="section-no">04 / 运行记录</div><h2>Agent 执行过程</h2><p class="subtle"><a id="trace-link" target="_blank" rel="noopener">查看本地 Trace JSON</a> · <a href="/docs" target="_blank" rel="noopener">FastAPI 接口文档</a></p><ol id="trace" class="timeline"></ol></section>
+<section class="card" id="knowledge-panel"><div class="section-no">05 / 司法知识库</div><h2>检索与切片</h2>
+<p class="subtle" id="knowledge-stats">正在读取索引…</p>
+<form id="knowledge-form"><label for="knowledge-query">检索关键词</label>
+<div class="actions"><input id="knowledge-query" maxlength="180" value="鉴定程序 内部复核" required><button type="submit">检索</button></div></form>
+<div id="knowledge-results" aria-live="polite"></div></section>
+</div></div></main>
+<footer>本地独立演示 · LangChain / LangGraph · 不连接商用系统</footer>
+</body></html>
